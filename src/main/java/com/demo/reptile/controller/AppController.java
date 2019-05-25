@@ -1,5 +1,6 @@
 package com.demo.reptile.controller;
 
+import com.demo.reptile.test.NetworkUtil;
 import com.demo.reptile.test.ProUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.Map;
 
 
@@ -22,12 +24,20 @@ import java.util.Map;
 @CrossOrigin(origins = "*", maxAge = 3600)
 public class AppController {
     public static Integer sum = 0;
+    //上一次IP
     public static String oldIp = "";
 
     @RequestMapping("/index")
     public String goIndex(Model model, HttpServletRequest request) {
-        String ip = request.getRemoteAddr();
+        String ip="";
+        try {
+            //真实IP
+            ip = NetworkUtil.getIpAddress(request);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        System.out.println("真实IP:   "+ip);
         if (!ip.equals(oldIp)) {
             sum++;
         }

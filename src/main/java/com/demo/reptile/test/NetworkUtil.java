@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
- * NetworkUtil:获取非代理IP
+ * NetworkUtil:获取非代理IP,就是真实IP地址
  *
  * @author zhangxiaoxiang
  * @date: 2019/05/25

@@ -22,7 +22,8 @@ public class ReptileApplication {
         //System.out.println(urList1);
         List urList2 = CSDN.getUrList(2);
         urlList.addAll(urList1);
-        urlList.addAll(urList2);// 合并两个集合
+        urlList.addAll(urList2);
+        // 合并两个集合
         // 开启爬取第一页的线程(混合会下标越界)
         for (int i = 0; i < urList1.size(); i++) {
             list.add(RunnableDemo((String) urList1.get(i)));

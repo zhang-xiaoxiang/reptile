@@ -17,7 +17,7 @@ import java.util.Map;
  * @date: 2019/05/25
  */
 @Controller
-@CrossOrigin("")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class AppController {
 
     @RequestMapping("/index")

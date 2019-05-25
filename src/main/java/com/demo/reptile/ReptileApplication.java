@@ -15,6 +15,7 @@ public class ReptileApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ReptileApplication.class, args);
+        System.out.println("http://localhost:8080/index");
         List<Runnable> list = new ArrayList<>();
         List<String> urlList = new ArrayList<>();
         List urList1 = CSDN.getUrList(1);
@@ -42,5 +43,6 @@ public class ReptileApplication {
 
         count.start();// 顺序不一定
     }
+
 
 }

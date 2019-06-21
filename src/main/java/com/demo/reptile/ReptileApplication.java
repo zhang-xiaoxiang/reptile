@@ -4,18 +4,27 @@ import com.demo.reptile.test.App;
 import com.demo.reptile.test.CSDN;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.demo.reptile.test.App.RunnableDemo;
+/**
+ * ReptileApplication:
+ * @author zhangxiaoxiang
+ * @date 2019/6/21
+ */
 
 @SpringBootApplication
 public class ReptileApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ReptileApplication.class, args);
-        System.out.println("http://localhost:8080/index");
+        ConfigurableApplicationContext context = SpringApplication.run(ReptileApplication.class, args);
+        String port = context.getEnvironment().getProperty("server.port");
+        //通过getEnvironment(),getProperty()方法获取配置属性值
+        System.out.println("http://localhost:"+port+"/index");
+        System.out.println("http://localhost:"+port+"/info");
         List<Runnable> list = new ArrayList<>();
         List<String> urlList = new ArrayList<>();
         List urList1 = CSDN.getUrList(1);
@@ -44,6 +53,7 @@ public class ReptileApplication {
 
         count.start();// 顺序不一定
     }
+
 
 
 }

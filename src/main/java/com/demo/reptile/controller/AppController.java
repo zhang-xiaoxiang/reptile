@@ -2,16 +2,17 @@ package com.demo.reptile.controller;
 
 import com.demo.reptile.test.NetworkUtil;
 import com.demo.reptile.test.ProUtil;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Map;
+import lombok.extern.slf4j.Slf4j;
 
 
 /**
@@ -22,13 +23,23 @@ import java.util.Map;
  */
 @Controller
 @CrossOrigin(origins = "*", maxAge = 3600)
+@Slf4j
 public class AppController {
+
+
+    @Value("${demo.name}")
+    private String name;
+
+    @Value("${demo.age}")
+    private String age;
+
     public static Integer sum = 0;
     //上一次IP
     public static String oldIp = "";
 
     @RequestMapping("/index")
     public String goIndex(Model model, HttpServletRequest request) {
+        log.info("==========================================进入了index方法================================================");
         String ip="";
         try {
             //真实IP
@@ -59,5 +70,18 @@ public class AppController {
         return "index";
     }
 
+
+    @RequestMapping("/info")
+    @ResponseBody
+    public Object goInfo(Model model, HttpServletRequest request) {
+        log.info("==========================================进入了goInfo方法================================================");
+        Map map = ProUtil.readPro();
+        if (map == null) {
+            map.put("VisitsNum", "总访问量初始化!");
+            map.put("amount", "该时段访问数量初始化!");
+        }
+        System.out.println(name+"============"+age);
+        return map;
+    }
 
 }

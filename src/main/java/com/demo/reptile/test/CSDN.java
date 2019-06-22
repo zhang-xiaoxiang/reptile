@@ -95,7 +95,7 @@ public class CSDN {
 			doc = Jsoup.connect("https://blog.csdn.net/wozniakzhang/article/list/" + pageNum + "?").get();// 爬取的网站
 			String text = doc.text();// HTML格式转文本格式(就是不带标签,只获取内容)
 			Elements elements2 = doc.select("#mainBox > main > div.article-list div");// 这是获取到所有div里面的h2标签的元素集合,不同网站这里解析方式不一样而已
-			System.out.println("第"+pageNum+"页博客数量:" + (((elements2.size()-1)/2)-1));
+			//System.out.println("第"+pageNum+"页博客数量:" + (((elements2.size()-1)/2)-1));
 			for (int i = 2; i < elements2.size()-1; i+=2) {
 				//System.out.println("最初地址:  "+i+"  "+elements2.get(i).select("h4 > a").attr("href"));
 				urList.add(elements2.get(i).select("h4 > a").attr("href"));// 获取遍历的地址

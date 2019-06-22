@@ -102,7 +102,7 @@ public class App {
                     System.out.println(sdf.format(new Date()) + "   CSDN访问量:  " + accessNumber);
                     try {
                         Thread.sleep(timeInterval);
-                        System.out.println("该时间段的访问量:=========================== > " + (CSDN.accessNumber() - accessNumber));
+                        System.out.println("\n\n该时间段的访问量:=========================== > " + (CSDN.accessNumber() - accessNumber)+"\n\n");
                         ProUtil.savePro(String.valueOf(CSDN.accessNumber()), String.valueOf((CSDN.accessNumber() - accessNumber)));
                     } catch (InterruptedException e) {
                         e.printStackTrace();

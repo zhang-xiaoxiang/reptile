@@ -12,10 +12,15 @@ import java.util.Map;
 
 public class HttpRequest {
 
+// 58.218.200.223:30069
+// 58.218.200.223:30000
+// 58.218.200.223:30002
+// 58.218.200.223:30217
+
     public static void main(String[] args) {
         // 如果不设置，只要代理IP和代理端口正确,此项不设置也可以
         System.getProperties().setProperty("http.proxyHost", "58.218.200.223");
-        System.getProperties().setProperty("http.proxyPort", "30037");
+        System.getProperties().setProperty("http.proxyPort", "30150");
         // 判断代理是否设置成功
         // 发送 GET 请求
         // System.out.println(sendGet(

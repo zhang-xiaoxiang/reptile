@@ -56,7 +56,8 @@ public class CSDN {
 			String attr = elements.attr("title");
 			if (attr==null||attr==""){
 				//没有就乱写一个
-				return 1000;
+				log.error("暂时被封了.....");
+				return 0;
 			}
 			log.info("title  "+attr);
 			number = Integer.valueOf(attr);

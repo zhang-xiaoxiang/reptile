@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
 import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
@@ -21,47 +22,24 @@ import org.jsoup.select.Elements;
  * @author zhangxiaoxiang
  * @date 2019/5/25
  */
+@Slf4j
 public class App {
     private static Runnable runnableDemo;
 
-
-    //Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
     public static void manypage(String uslString) {
         // 创建httpClient实例
         CloseableHttpClient httpClient = HttpClients.createDefault();
         // 创建httpget实例
         HttpGet httpGet = new HttpGet(uslString);
-        // httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64;
-        // rv:50.0) Gecko/20100101 Firefox/50.0"); // 设置请求头消息User-Agent
+        // 设置请求头消息User-Agent
         httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; rv:6.0.2) Gecko/20100101 Firefox/6.0.2");
-
         CloseableHttpResponse response = null;
         try {
             response = httpClient.execute(httpGet);
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        // 执行http get请求 // 获取返回实体
-        HttpEntity entity = response.getEntity();
-        try {
-            // System.out.println("网页内容："+EntityUtils.toString(entity, "utf-8"));
-            // System.out.println("刷新网页内容" + uslString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } // 获取网页内容
-        try {
+            // 执行http get请求 // 获取返回实体
+            HttpEntity entity = response.getEntity();
             // response关闭
             response.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
             // httpClient关闭
             httpClient.close();
         } catch (IOException e) {
@@ -104,7 +82,7 @@ public class App {
                     System.out.println(sdf.format(new Date()) + "   数量:  " + accessNumber);
                     try {
                         Thread.sleep(timeInterval);
-                        System.out.println("\n\n该时间段的水军数量:=========================== > " + (CSDN.accessNumber() - accessNumber)+"\n\n");
+                        log.info("\n\n该时间段的水军数量:=========================== > " + (CSDN.accessNumber() - accessNumber) + "\n\n");
                         ProUtil.savePro(String.valueOf(CSDN.accessNumber()), String.valueOf((CSDN.accessNumber() - accessNumber)));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -129,7 +107,7 @@ public class App {
             String attr = elements.attr("title");
             number = Integer.valueOf(attr);
             // 获取元素属性的值
-             System.out.println("\nCSDN访问量: " + number);
+            System.out.println("\nCSDN访问量: " + number);
         } catch (IOException e) {
             e.printStackTrace();
 

@@ -27,8 +27,10 @@ public class App {
 
     //Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
     public static void manypage(String uslString) {
-        CloseableHttpClient httpClient = HttpClients.createDefault(); // 创建httpClient实例
-        HttpGet httpGet = new HttpGet(uslString); // 创建httpget实例
+        // 创建httpClient实例
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        // 创建httpget实例
+        HttpGet httpGet = new HttpGet(uslString);
         // httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64;
         // rv:50.0) Gecko/20100101 Firefox/50.0"); // 设置请求头消息User-Agent
         httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; rv:6.0.2) Gecko/20100101 Firefox/6.0.2");
@@ -43,8 +45,8 @@ public class App {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        // 执行http get请求
-        HttpEntity entity = response.getEntity(); // 获取返回实体
+        // 执行http get请求 // 获取返回实体
+        HttpEntity entity = response.getEntity();
         try {
             // System.out.println("网页内容："+EntityUtils.toString(entity, "utf-8"));
             // System.out.println("刷新网页内容" + uslString);
@@ -91,18 +93,18 @@ public class App {
 
     public static Runnable countRunnable() {
 
-        // 单位: 毫秒
-        final long timeInterval = 60 * 1000;// 爬取时钟
+        // 单位: 毫秒 // 爬取时钟
+        final long timeInterval = 60 * 1000;
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 while (true) {
                     Integer accessNumber = CSDN.accessNumber();
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    System.out.println(sdf.format(new Date()) + "   CSDN访问量:  " + accessNumber);
+                    System.out.println(sdf.format(new Date()) + "   数量:  " + accessNumber);
                     try {
                         Thread.sleep(timeInterval);
-                        System.out.println("\n\n该时间段的访问量:=========================== > " + (CSDN.accessNumber() - accessNumber)+"\n\n");
+                        System.out.println("\n\n该时间段的水军数量:=========================== > " + (CSDN.accessNumber() - accessNumber)+"\n\n");
                         ProUtil.savePro(String.valueOf(CSDN.accessNumber()), String.valueOf((CSDN.accessNumber() - accessNumber)));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -118,15 +120,19 @@ public class App {
         Document doc;
         Integer number = null;
         try {
-            doc = Jsoup.connect("https://blog.csdn.net/wozniakzhang/article/list/1?").get();// 爬取的网站
-            String text = doc.text();// HTML格式转文本格式(就是不带标签,只获取内容)
-            Elements elements = doc.select("div.grade-box.clearfix > dl:nth-child(2) > dd");// 这是获取到所有div里面的h2标签的元素集合,不同网站这里解析方式不一样而已
+            // 爬取的网站
+            doc = Jsoup.connect("https://blog.csdn.net/wozniakzhang/article/list/1?").get();
+            // HTML格式转文本格式(就是不带标签,只获取内容)
+            String text = doc.text();
+            // 这是获取到所有div里面的h2标签的元素集合,不同网站这里解析方式不一样而已
+            Elements elements = doc.select("div.grade-box.clearfix > dl:nth-child(2) > dd");
             String attr = elements.attr("title");
             number = Integer.valueOf(attr);
-            // System.out.println("\nCSDN访问量: " + number);// 获取元素属性的值
-
+            // 获取元素属性的值
+             System.out.println("\nCSDN访问量: " + number);
         } catch (IOException e) {
             e.printStackTrace();
+
         }
         return number;
     }

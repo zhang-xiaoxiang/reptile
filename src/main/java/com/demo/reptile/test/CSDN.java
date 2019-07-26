@@ -85,8 +85,6 @@ public class CSDN {
 					Integer accessNumber = CSDN.accessNumber();
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 					//System.out.println(sdf.format(new Date()) + "   CSDN访问量:  " + accessNumber);
-
-					System.out.println("---------------------");
 					try {
 						Thread.sleep(timeInterval);
 					} catch (InterruptedException e) {

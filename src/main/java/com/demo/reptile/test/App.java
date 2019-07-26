@@ -82,7 +82,7 @@ public class App {
                     System.out.println(sdf.format(new Date()) + "   数量:  " + accessNumber);
                     try {
                         Thread.sleep(timeInterval);
-                        log.info("\n\n该时间段的水军数量:=========================== > " + (CSDN.accessNumber() - accessNumber) + "\n\n");
+                        log.info("该时间段的水军数量:=========================== > " + (CSDN.accessNumber() - accessNumber) );
                         ProUtil.savePro(String.valueOf(CSDN.accessNumber()), String.valueOf((CSDN.accessNumber() - accessNumber)));
                     } catch (InterruptedException e) {
                         e.printStackTrace();

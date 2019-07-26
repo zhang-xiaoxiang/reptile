@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.lang.model.element.Element;
 
+import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -20,6 +21,7 @@ import org.jsoup.select.Elements;
  * @author 捡矿泉水瓶瓶的张大祥
  *
  */
+@Slf4j
 public class CSDN {
 //	public static void main(String[] args) throws IOException {
 //		Document doc = Jsoup.connect("https://blog.csdn.net/wozniakzhang/article/list/1?").get();// 爬取的网站
@@ -39,19 +41,31 @@ public class CSDN {
 		Document doc;
 		Integer number = null;
 		try {
-			doc = Jsoup.connect("https://blog.csdn.net/wozniakzhang/article/list/1?").get();// 爬取的网站
-			String text = doc.text();// HTML格式转文本格式(就是不带标签,只获取内容)
-			Elements elements = doc.select("div.grade-box.clearfix > dl:nth-child(2) > dd");// 这是获取到所有div里面的h2标签的元素集合,不同网站这里解析方式不一样而已
-			Elements elements2 = doc.select("#mainBox > main > div.article-list div");// 这是获取到所有div里面的h2标签的元素集合,不同网站这里解析方式不一样而已
+			// 爬取的网站
+			doc = Jsoup.connect("https://blog.csdn.net/wozniakzhang/article/list/1?").get();
+			// HTML格式转文本格式(就是不带标签,只获取内容)
+			String text = doc.text();
+			// 这是获取到所有div里面的h2标签的元素集合,不同网站这里解析方式不一样而已
+			Elements elements = doc.select("div.grade-box.clearfix > dl:nth-child(2) > dd");
+			// 这是获取到所有div里面的h2标签的元素集合,不同网站这里解析方式不一样而已
+			Elements elements2 = doc.select("#mainBox > main > div.article-list div");
 			for (int i = 1; i < elements2.size(); i++) {
 				//System.out.println(elements2.get(i).select("h4 > a").attr("href"));// 获取遍历的地址
 			}
+
 			String attr = elements.attr("title");
+			if (attr==null||attr==""){
+				//没有就乱写一个
+				return 1000;
+			}
+			log.info("title  "+attr);
 			number = Integer.valueOf(attr);
+			log.info("number  "+number);
 			// System.out.println("\nCSDN访问量: " + number);// 获取元素属性的值
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 		return number;
 	}
 
@@ -92,18 +106,23 @@ public class CSDN {
 		Document doc;
 		List<String> urList = new ArrayList<String>();
 		try {
-			doc = Jsoup.connect("https://blog.csdn.net/wozniakzhang/article/list/" + pageNum + "?").get();// 爬取的网站
-			String text = doc.text();// HTML格式转文本格式(就是不带标签,只获取内容)
-			Elements elements2 = doc.select("#mainBox > main > div.article-list div");// 这是获取到所有div里面的h2标签的元素集合,不同网站这里解析方式不一样而已
+			// 爬取的网站
+			doc = Jsoup.connect("https://blog.csdn.net/wozniakzhang/article/list/" + pageNum + "?").get();
+			// HTML格式转文本格式(就是不带标签,只获取内容)
+			String text = doc.text();
+			// 这是获取到所有div里面的h2标签的元素集合,不同网站这里解析方式不一样而已
+			Elements elements2 = doc.select("#mainBox > main > div.article-list div");
 			//System.out.println("第"+pageNum+"页博客数量:" + (((elements2.size()-1)/2)-1));
 			for (int i = 2; i < elements2.size()-1; i+=2) {
 				//System.out.println("最初地址:  "+i+"  "+elements2.get(i).select("h4 > a").attr("href"));
-				urList.add(elements2.get(i).select("h4 > a").attr("href"));// 获取遍历的地址
+				// 获取遍历的地址
+				urList.add(elements2.get(i).select("h4 > a").attr("href"));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return urList;//返回数量
+		//返回数量
+		return urList;
 	}
 
 	public static void main(String[] args) {

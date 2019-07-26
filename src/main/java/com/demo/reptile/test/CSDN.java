@@ -49,9 +49,9 @@ public class CSDN {
                 log.error("暂时被封了.....");
                 return 0;
             }
-            log.info("title  " + attr);
+            //log.info("title  " + attr);
             number = Integer.valueOf(attr);
-            log.info("number  " + number);
+           // log.info("number  " + number);
             // System.out.println("\nCSDN访问量: " + number);// 获取元素属性的值
         } catch (IOException e) {
             e.printStackTrace();

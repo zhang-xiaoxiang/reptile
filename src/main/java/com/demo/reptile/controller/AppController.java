@@ -40,6 +40,7 @@ public class AppController {
     @RequestMapping("/index")
     public String goIndex(Model model, HttpServletRequest request) {
         log.info("==========================================进入了index方法================================================");
+        log.info("IP地址: "+request.getRemoteAddr());
         String ip="";
         try {
             //真实IP

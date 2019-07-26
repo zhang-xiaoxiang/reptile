@@ -26,6 +26,10 @@ import org.jsoup.select.Elements;
 public class App {
     private static Runnable runnableDemo;
 
+    /**
+     * 根据地址模拟访问
+     * @param uslString
+     */
     public static void manypage(String uslString) {
         // 创建httpClient实例
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -47,6 +51,11 @@ public class App {
         }
     }
 
+    /**
+     * 模拟浏览器访问线程
+     * @param urlString
+     * @return
+     */
     public static Runnable RunnableDemo(String urlString) {
         // 单位: 秒(免得搞混淆)
         final long timeInterval = 65 * 1000;
@@ -55,7 +64,6 @@ public class App {
             public void run() {
                 while (true) {
                     manypage(urlString);
-
                     try {
                         Thread.sleep(timeInterval);
                     } catch (InterruptedException e) {
@@ -69,8 +77,11 @@ public class App {
         return runnable;
     }
 
+    /**
+     * 查询博客访问情况的定时线程
+     * @return
+     */
     public static Runnable countRunnable() {
-
         // 单位: 毫秒 // 爬取时钟
         final long timeInterval = 60 * 1000;
         Runnable runnable = new Runnable() {
@@ -82,7 +93,7 @@ public class App {
                     System.out.println(sdf.format(new Date()) + "   数量:  " + accessNumber);
                     try {
                         Thread.sleep(timeInterval);
-                        log.info("该时间段的水军数量:=========================== > " + (CSDN.accessNumber() - accessNumber) );
+                        log.info("该时间段的水军数量:===> " + (CSDN.accessNumber() - accessNumber) );
                         ProUtil.savePro(String.valueOf(CSDN.accessNumber()), String.valueOf((CSDN.accessNumber() - accessNumber)));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -90,10 +101,13 @@ public class App {
                 }
             }
         };
-
         return runnable;
     }
 
+    /**
+     * 获取博客访问数量
+     * @return
+     */
     public static Integer accessNumber() {
         Document doc;
         Integer number = null;
@@ -107,7 +121,7 @@ public class App {
             String attr = elements.attr("title");
             number = Integer.valueOf(attr);
             // 获取元素属性的值
-            System.out.println("\nCSDN访问量: " + number);
+           log.info("博客目前访问量: " + number);
         } catch (IOException e) {
             e.printStackTrace();
 
@@ -115,34 +129,4 @@ public class App {
         return number;
     }
 
-    public static void main(String[] args) throws Exception {
-//		List<Runnable> list = new ArrayList<>();
-//		List<String> urlList = new ArrayList<>();
-//		List urList1 = CSDN.getUrList(1);
-//		//System.out.println(urList1);
-//		List urList2 = CSDN.getUrList(2);
-//		urlList.addAll(urList1);
-//		urlList.addAll(urList2);// 合并两个集合
-//		// 开启爬取第一页的线程(混合会下标越界)
-//		for (int i = 0; i < urList1.size(); i++) {
-//			list.add(RunnableDemo((String) urList1.get(i)));
-//		}
-//		// 开启爬取第二页的线程(混合会下标越界)
-//		for (int i = 0; i < urList2.size(); i++) {
-//			list.add(RunnableDemo((String) urList2.get(i)));
-//
-//		}
-//
-//		Thread count = new Thread(new App().countRunnable());// 统计数量的线程
-//		Thread thread = null;
-//		for (int i = 0; i < list.size(); i++) {
-//			thread = new Thread(list.get(i));
-//			thread.start();
-//
-//		}
-//
-//		count.start();// 顺序不一定
-
-
-    }
 }

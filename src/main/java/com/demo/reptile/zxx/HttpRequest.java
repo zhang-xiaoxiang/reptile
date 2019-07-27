@@ -14,9 +14,9 @@ public class HttpRequest {
 
 
     public static void main(String[] args) {
-        // 如果不设置，只要代理IP和代理端口正确,此项不设置也可以
+        // 如果不设置，只要代理IP和代理端口正确,此项不设置也可以  #58.218.200.223:30126
         System.getProperties().setProperty("http.proxyHost", "58.218.200.223");
-        System.getProperties().setProperty("http.proxyPort", "30000");
+        System.getProperties().setProperty("http.proxyPort", "30314");
         // 判断代理是否设置成功
         // 发送 GET 请求
         // System.out.println(sendGet(
@@ -24,58 +24,58 @@ public class HttpRequest {
         //         "param1=xxx&param2=yyy"));
         // 发送 POST 请求
         sendGet("https://blog.csdn.net/wozniakzhang/article/details/93323593","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/96912106","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/96901836","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/96213281","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/95928195","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/95855296","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/95459796","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/95214254","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/94667441","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/93305382","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/92174287","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/91983174","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/91868669","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/90526668","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/90138418","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/90138119","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/89814231","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/89703065","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/89681562","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/89501701","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/86350877","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/86355935","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/89390595","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/89362018","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/89250229","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/89180807","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/89156635","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/88897181","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/88315559","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/87903327","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/87900459","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/87531390","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/87428203","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/86345087","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/87268424","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/86773134","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/86771714","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/86770651","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/86631385","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/86491809","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/86306761","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/85784029","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/85482985","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/85225331","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/85222414","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/84927175","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/84842388","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/84636578","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/84626294","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/84580083","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/84256090","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/84069547","");
-        // sendGet("https://blog.csdn.net/wozniakzhang/article/details/80772314","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/96912106","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/96901836","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/96213281","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/95928195","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/95855296","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/95459796","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/95214254","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/94667441","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/93305382","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/92174287","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/91983174","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/91868669","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/90526668","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/90138418","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/90138119","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/89814231","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/89703065","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/89681562","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/89501701","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/86350877","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/86355935","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/89390595","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/89362018","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/89250229","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/89180807","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/89156635","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/88897181","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/88315559","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/87903327","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/87900459","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/87531390","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/87428203","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/86345087","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/87268424","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/86773134","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/86771714","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/86770651","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/86631385","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/86491809","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/86306761","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/85784029","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/85482985","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/85225331","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/85222414","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/84927175","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/84842388","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/84636578","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/84626294","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/84580083","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/84256090","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/84069547","");
+        sendGet("https://blog.csdn.net/wozniakzhang/article/details/80772314","");
 
 
 

@@ -43,7 +43,9 @@ public class CSDN {
                 //System.out.println(elements2.get(i).select("h4 > a").attr("href"));// 获取遍历的地址
             }
 
-            String attr = elements.attr("title");
+            // String attr = elements.attr("title");
+            Document doc1 = Jsoup.connect("https://blog.csdn.net/wozniakzhang").get();
+            String attr =  doc1.select("#asideProfile > div.grade-box.clearfix > dl:nth-child(1) > dd").attr("title");
             if (attr == null || attr == "") {
                 //没有就乱写一个
                 log.error("暂时被封了.....");

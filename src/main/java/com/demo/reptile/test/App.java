@@ -124,6 +124,7 @@ public class App {
             // HTML格式转文本格式(就是不带标签,只获取内容)
             String text = doc.text();
             // 这是获取到所有div里面的h2标签的元素集合,不同网站这里解析方式不一样而已
+            //#mainBox > main > div.article-list > div:nth-child(2) > h4 > a
             Elements elements = doc.select("div.grade-box.clearfix > dl:nth-child(2) > dd");
             String attr = elements.attr("title");
             number = Integer.valueOf(attr);

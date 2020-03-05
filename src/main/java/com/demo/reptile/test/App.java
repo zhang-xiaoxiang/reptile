@@ -42,6 +42,9 @@ public class App {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         // 创建httpget实例
         HttpGet httpGet = new HttpGet(uslString);
+        RequestConfig defaultConfig = RequestConfig.custom().setCookieSpec(CookieSpecs.STANDARD).build();
+        httpGet.setConfig(defaultConfig);
+
         // 设置请求头消息User-Agent
         httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; rv:6.0.2) Gecko/20100101 Firefox/6.0.2");
         CloseableHttpResponse response = null;

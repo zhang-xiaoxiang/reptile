@@ -45,7 +45,8 @@ public class CSDN {
 
             // String attr = elements.attr("title");
             Document doc1 = Jsoup.connect("https://blog.csdn.net/wozniakzhang").get();
-            String attr =  doc1.select("#asideProfile > div.grade-box.clearfix > dl:nth-child(1) > dd").attr("title");
+            //#asideProfile > div.data-info.d-flex.item-tiling > dl:nth-child(5)
+            String attr =  doc1.select("#asideProfile > div.data-info.d-flex.item-tiling > dl:nth-child(5)").attr("title");
             if (attr == null || attr == "") {
                 //没有就乱写一个
                 log.error("暂时被封了.....");
